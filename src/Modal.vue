@@ -89,6 +89,10 @@
           return value >= 0
         }
       },
+      showBackground: {
+        type: Boolean,
+        default: true
+      },
       width: {
         type: [Number, String],
         default: 600,
@@ -290,7 +294,8 @@
       overlayClass () {
         return {
           'v--modal-overlay': true,
-          'scrollable': this.scrollable && this.isAutoHeight
+          'scrollable': this.scrollable && this.isAutoHeight,
+          'v--hide-modal-overlay':!this.showBackground
         }
       },
       /**
@@ -514,6 +519,11 @@
     background: rgba(0, 0, 0, 0.2);
     z-index: 999;
     opacity: 1;
+  }
+
+  .v--modal-overlay.v--hide-modal-overlay{
+    width: 0;
+    height:0;
   }
 
   .v--modal-overlay.scrollable {
